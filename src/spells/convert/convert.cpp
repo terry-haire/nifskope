@@ -163,7 +163,7 @@ void combineHighLevelLODs(
                     if (nifCombined.getBlockCount() > 0) {
                         QString fileName =
                                 pathDst +
-                                "Meshes\\Terrain\\" +
+                                "\\Meshes\\Terrain\\" +
                                 worldspace +
                                 "\\Objects\\" +
                                 worldspace +
