@@ -66,7 +66,7 @@ jobs:
               qmake -r ${{ env.SOURCE_DIR }}\NifSkope.pro
               ${{ runner.temp }}\jom\jom -j2
               cd release
-              windeployqt --qmldir ${{ env.SOURCE_DIR }} NifSkope.exe --pdb --release --compiler-runtime
+              windeployqt --dir ${{ env.SOURCE_DIR }}\build\nifskope_converter\release --qmldir ${{ env.SOURCE_DIR }} NifSkope.exe --pdb --release --compiler-runtime
               copy C:\Windows\System32\concrt140.dll .
               copy C:\Windows\System32\vccorlib140.dll .
               copy C:\Windows\System32\msvcp140.dll .
