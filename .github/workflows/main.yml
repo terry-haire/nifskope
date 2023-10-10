@@ -53,7 +53,7 @@ jobs:
               7z x jom.zip -ojom
 
       - name: Create build directory
-        run:  mkdir ${{ env.SOURCE_DIR }}\build\nifskope_converter
+        run:  mkdir ${{ env.SOURCE_DIR }}\bin
 
       - name: Set up Visual Studio shell
         uses: egor-tensin/vs-shell@v2
@@ -61,12 +61,12 @@ jobs:
           arch: x64
 
       - name: Build NifSkope
-        working-directory: ${{ env.SOURCE_DIR }}\build\nifskope_converter
+        working-directory: ${{ env.SOURCE_DIR }}\bin
         run:  |
               qmake -r ${{ env.SOURCE_DIR }}\NifSkope.pro
               ${{ runner.temp }}\jom\jom -j2
               cd release
-              windeployqt --dir ${{ env.SOURCE_DIR }}\build\nifskope_converter\release --qmldir ${{ env.SOURCE_DIR }} NifSkope.exe --pdb --release --compiler-runtime
+              windeployqt --dir ${{ env.SOURCE_DIR }}\bin\release --qmldir ${{ env.SOURCE_DIR }} NifSkope.exe --pdb --release --compiler-runtime
               copy C:\Windows\System32\concrt140.dll .
               copy C:\Windows\System32\vccorlib140.dll .
               copy C:\Windows\System32\msvcp140.dll .
@@ -77,7 +77,7 @@ jobs:
         with:
           name: ${{ env.ARTIFACT }}
           path: |
-            ${{ env.SOURCE_DIR }}\build\nifskope_converter\release\
+            ${{ env.SOURCE_DIR }}\bin\release\
 
   release:
     if: github.event_name == 'push' && github.ref == 'refs/heads/converter'
