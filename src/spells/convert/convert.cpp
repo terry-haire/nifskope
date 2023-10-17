@@ -4311,7 +4311,7 @@ void Converter::properties(QModelIndex iSrc, QModelIndex iShaderPropertyDst, QMo
             matPath += ".BGSM";
         }
 
-        nifDst->set<QString>(iShaderPropertyDst, "Name", matPath.replace('/', '\\'));
+        nifDst->set<QString>(iShaderPropertyDst, "Name", matPath.replace("//", "/").replace('/', '\\'));
         materialList.append(QPair(matPath, json));
     }
 }
