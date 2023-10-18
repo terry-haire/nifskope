@@ -511,7 +511,7 @@ void matFloats(
         fGrayscaleToPaletteScale = double(nifDst->get<float>(iShader, "Grayscale to Palette Scale"));
         fRefractionPower = double(nifDst->get<float>(iShader, "Refraction Strength"));
 
-        if (!isinf(nifDst->get<float>(iShader, "Rimlight Power"))) {
+        if (json.value("fRimPower").toBool() && !isinf(nifDst->get<float>(iShader, "Rimlight Power"))) {
             fRimPower = double(nifDst->get<float>(iShader, "Rimlight Power"));
         }
 
