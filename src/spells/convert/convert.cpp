@@ -4299,7 +4299,7 @@ void Converter::properties(QModelIndex iSrc, QModelIndex iShaderPropertyDst, QMo
 
         // Remove the file extension and make the filename a directory
         if (sExt.length() > 0) {
-            matPath = matPath.left(matPath.length() - sExt.length() - 1) + "/";
+            matPath = matPath.left(matPath.length() - sExt.length() - 1).trimmed() + "/";
         }
 
         // Add the material filename
@@ -5071,6 +5071,8 @@ void convertNif(const QString pathDst, const QString & dataPathSrc, QString path
                     }));
 
             // Display the dialog and start the event loop.
+            dialog.adjustSize();
+            dialog.setMinimumWidth(600);
             dialog.exec();
 
             futureWatcher.waitForFinished();
